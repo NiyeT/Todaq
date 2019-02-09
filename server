@@ -1,0 +1,67 @@
+#!/usr/bin/env node
+
+const express = require('express');
+const app = express();
+const fs=require('fs');
+const path=require('path');
+const http=require("http");
+// const https=require('https');
+const shell=require('shelljs');
+
+// const Options={
+// 	key:fs.readFileSync("ssl/private.key"),
+// 	cert:fs.readFileSync("ssl/certificate.crt")
+// }
+
+const network={
+    "port":8007,
+    "host":"localhost"
+}
+
+app.get("/createAccount",(req,res)=>{
+  res.setHeader('Content-Type', 'application/json');
+  res.set("Access-Control-Allow-Origin","*");
+  const email=req.query.email;
+  const password=req.query.password;
+  const command=`todaq -createAccount \'{"email":"${email}","first-name":"missingno","last-name":"not-applicable"}\'`;
+  const userID=shell.exec(command).stdout;
+  res.json({'userid':userID});
+})
+
+app.get("/createItem*",(req,res)=>{
+  res.setHeader('Content-Type', 'application/json');  
+  res.set("Access-Control-Allow-Origin","*");
+  const item={brand:req.query.brand,productLine:req.query.productLine,productVersion:req.query.productVersion,serialNumber:req.query.serialNumber}
+  const command=`todaq -createItem "${JSON.stringify(item)}" -id ${req.query.userid}`
+  console.log('com:',command);
+  const itemID=shell.exec(command).stdout;
+  res.send({'itemid':itemID});
+})
+
+app.get("/listItems*",(req,res)=>{
+  res.setHeader('Content-Type', 'application/json');  
+  res.set("Access-Control-Allow-Origin","*");
+  const command=`todaq -listItems ${req.query.userid}`;
+  console.log('listing items with command:',command)
+  const items=shell.exec(command).stdout;
+  // console.log('items:',items)
+  res.json({'items':items})
+})
+
+app.get("/exchange",(req,res)=>{
+  res.setHeader('Content-Type', 'application/json');  
+  res.set("Access-Control-Allow-Origin","*");
+  const command=`todaq -exchange ${req.query.itemID} -from ${req.query.from} -to ${req.query.to}`
+  const receipt=shell.exec(command).stdout;
+  res.send(receipt);
+})
+
+app.get('/*', (req, res) => {
+  const requestedPath=req.originalUrl=="/" ? "/index.html" : req.originalUrl;
+  const file_path=path.join(__dirname,requestedPath);
+  console.log('file_path:',file_path)
+  res.sendFile(file_path);
+})
+
+http.createServer(app).listen(network.port, () => console.log(`Listening to ${network.port}`))
+// https.createServer(options=Options,app).listen(network.port, () => console.log(`Listening to ${network.port}`))

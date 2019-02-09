@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Contact V16</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
+<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+
+</head>
+<body>
+
+	<div class="bg-container-contact100" style="background-image: url(images/bg-01.jpg);">
+		<div class="contact100-header flex-sb-m">
+			<style>.btn-show-contact100{width:20px;}</style>
+			<div style="color:white;;border-right-width:1px;border-right-style:solid;border-right-color:white;padding:10px;padding-left:0px;font-size:1.5em;font-family: 'Varela Round', sans-serif;font-weight:bold;">
+				<a style="color:white;font-size:1.1em;" href="http://localhost:8007">Todaq</a>				
+			</div>	
+			<div style="color:white" class="menu-item" id="create-new-button">
+				New				
+			</div>	
+			<div style="color:white" class="menu-item" id="inventory-button">
+				Inventory				
+			</div>
+			<div style="color:white" class="menu-item" id="exchange-button">
+				Exchange				
+			</div>							
+		</div>
+	</div>
+
+	<div class="container-contact100">
+		<div class="wrap-contact100">
+			<button class="btn-hide-contact100">
+				<i class="zmdi zmdi-close"></i>
+			</button>
+
+			<div class="contact100-form-title" style="background-image: url(images/bg-02.jpg);">
+				<span id="main-wrapper-title">Create Item</span>
+			</div>
+
+			<div class="contact100-form validate-form" id="main-wrapper">
+				<div class="wrap-input100 validate-input">
+					<input id="brand" class="input100" type="text" name="name" placeholder="Brand Name">
+					<span class="focus-input100"></span>
+					<label class="label-input100" for="name">
+						<span class=""></span>
+					</label>
+				</div>
+
+				<div class="wrap-input100 validate-input">
+					<input id="productLine" class="input100" type="text" name="name" placeholder="Product Line">
+					<span class="focus-input100"></span>
+					<label class="label-input100" for="name">
+						<span class=""></span>
+					</label>
+				</div>
+
+
+				<div class="wrap-input100 validate-input">
+					<input id="productVersion" class="input100" type="text" name="phone" placeholder="Product Version">
+					<span class="focus-input100"></span>
+					<label class="label-input100" for="phone">
+						<span class=""></span>
+					</label>
+				</div>
+
+
+				<div class="wrap-input100 validate-input">
+					<input id="serialNumber" class="input100" type="text" name="phone" placeholder="Serial Number">
+					<span class="focus-input100"></span>
+					<label class="label-input100" for="phone">
+						<span class=""></span>
+					</label>
+				</div>				
+
+				<div class="container-contact100-form-btn">
+					<button class="contact100-form-btn" id="create-item-button">
+						Send Now
+					</button>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+
+
+<!--===============================================================================================-->
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/daterangepicker/moment.min.js"></script>
+	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-23581568-13');
+	</script>
+	<script type="text/javascript">
+
+		const cookies={
+			setCookie:function(name,value,days){
+			    var expires = "";
+			    if (days) {
+			        var date = new Date();
+			        date.setTime(date.getTime() + (days*24*60*60*1000));
+			        expires = "; expires=" + date.toUTCString();
+			    }
+			    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+			},
+			getCookie:function(name){
+			    var nameEQ = name + "=";
+			    var ca = document.cookie.split(';');
+			    for(var i=0;i < ca.length;i++) {
+			        var c = ca[i];
+			        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+			        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+			    }
+			    return null;
+
+			},
+			eraseCookie:function(name){
+			    document.cookie = name+'=; Max-Age=-99999999;';  
+			}
+		}
+
+		$('#inventory-button').on('click',function(){
+			document.querySelector("#main-wrapper-title").textContent="Inventory"
+			document.querySelector("#main-wrapper").innerHTML=window.userdata.brand + ' ' + window.userdata.productLine			
+		})
+
+		$('#create-new-button').on('click',function(){
+
+			document.querySelector("#main-wrapper-title").textContent="Create Item";
+			document.querySelector("#main-wrapper").innerHTML=`
+				<form class="contact100-form validate-form">
+				<div class="wrap-input100 validate-input">
+				<input id="name" class="input100" type="text" name="name" placeholder="Brand Name">
+				<span class="focus-input100"></span>
+				<label class="label-input100" for="name">
+					<span class=""></span>
+				</label>
+				</div>
+
+				<div class="wrap-input100 validate-input">
+				<input id="email" class="input100" type="text" name="email" placeholder="Product Line">
+				<span class="focus-input100"></span>
+				<label class="label-input100" for="email">
+					<span class=""></span>
+				</label>
+				</div>
+
+				<div class="wrap-input100 validate-input">
+				<input id="phone" class="input100" type="text" name="phone" placeholder="Product Version">
+				<span class="focus-input100"></span>
+				<label class="label-input100" for="phone">
+					<span class=""></span>
+				</label>
+				</div>
+
+				<div class="wrap-input100 validate-input">
+				<input id="phone" class="input100" type="text" name="phone" placeholder="Serial Number">
+				<span class="focus-input100"></span>
+				<label class="label-input100" for="phone">
+					<span class=""></span>
+				</label>
+				</div>				
+
+				<div class="container-contact100-form-btn">
+				<button class="contact100-form-btn">
+					Create Item
+				</button>
+				</div>
+				</form>
+			`
+		})
+
+			document.querySelector('#create-item-button').addEventListener('click',function(){
+				console.log('button clicked')
+				const brand=document.querySelector("#brand").value;
+				console.log('brand:',brand)
+				const productLine=document.querySelector("#productLine").value;
+				const productVersion=document.querySelector("#productVersion").value;
+				const serialNumber=document.querySelector("#serialNumber").value;
+				const item={'brand':brand,'productLine':productLine,'productVersion':productVersion,'serialNumber':serialNumber}
+				console.log('item:',item)
+				window.userdata={
+					brand:brand,
+					productLine:productLine,
+					productVersion:productVersion,
+					serialNumber:serialNumber
+				}
+				const url=`http://localhost:8007/createItem/?brand=${brand}&productLine=${productLine}&productVersion=${productVersion}&serialNumber=${serialNumber}&userid=${cookies.getCookie('userid')}`;
+				console.log('url:',url)
+				$.ajax({
+					url:url,
+					data:{item},
+					success:function(data){
+						console.log('item:',data)
+					}
+				})
+			})		
+
+			document.querySelector("#exchange-button").addEventListener("click",function(){
+				document.querySelector("#main-wrapper-title").textContent="Exchange"
+				document.querySelector("#main-wrapper").innerHTML=`
+			<form class="contact100-form validate-form">
+
+				<div class="wrap-input100 validate-input">
+				<input id="item" class="input100" type="text" name="name" placeholder="Item">
+				<span class="focus-input100"></span>
+				<label class="label-input100" for="name">
+					<span class="lnr lnr-diamond m-b-2"></span>
+				</label>
+				</div>
+
+				<div class="wrap-input100 validate-input">
+				<input id="from" class="input100" type="text" name="name" placeholder="From">
+				<span class="focus-input100"></span>
+				<label class="label-input100" for="name">
+					<span class="lnr lnr-user m-b-2"></span>
+				</label>
+				</div>
+
+				<div class="wrap-input100 validate-input">
+				<input id="to" class="input100" type="text" name="email" placeholder="To">
+				<span class="focus-input100"></span>
+				<label class="label-input100" for="email">
+					<span class="lnr lnr-envelope m-b-5"></span>
+				</label>
+				</div>			
+
+				<div class="container-contact100-form-btn">
+				<button class="contact100-form-btn"	id="send-button">
+					Send Now
+				</button>
+				</div>
+				</form>
+				`
+
+				document.querySelector("#send-button").addEventListener("click",function(){
+					const item=document.querySelector("#item").value
+					const from=document.querySelector("#from").value
+					const to=document.querySelector("#to").value
+					const url=`http://localhost:8007/exchange/?item=${item}&from=${from}&to=${to}`;
+					console.log('url:',url)
+					$.ajax({
+						url:url,
+						success:function(data){
+							console.log('sent:',data)
+						}
+					})
+				})
+			})
+	</script>
+</body>
+</html>

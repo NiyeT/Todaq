@@ -1,0 +1,18 @@
+{
+  "name": "now",
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "iron-icon": "PolymerElements/iron-icon#^2.1.0",
+    "iron-icons": "PolymerElements/iron-icons#^2.1.1"
+  }
+}
